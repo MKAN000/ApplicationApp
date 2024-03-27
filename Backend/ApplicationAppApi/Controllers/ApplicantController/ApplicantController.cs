@@ -15,7 +15,7 @@ namespace ApplicationAppApi.Controllers.ApplicantController
             _applicantService = applicant;
         }
 
-        [HttpPost("Applicants", Name = "CreateApplicantAccount")]
+        [HttpPost("Create", Name = "CreateApplicantAccount")]
         public async Task<IActionResult> CreateApplicantAccount([FromBody] ApplicantModel applicantModel)
         {
             if (await _applicantService.CreateApplicantAccount(applicantModel))
@@ -23,6 +23,18 @@ namespace ApplicationAppApi.Controllers.ApplicantController
                 return Ok();
             }
 
+            return BadRequest();
+        }
+
+        [HttpGet("Get", Name = "GetApplicantData")]
+        public async Task<IActionResult> GetApplicantData([FromQuery] int albumNumber)
+        {
+            var applicantData = await _applicantService.GetApplicantData(albumNumber);
+            if (applicantData != null)
+            {
+                return Ok(applicantData);
+
+            }
             return BadRequest();
         }
     }

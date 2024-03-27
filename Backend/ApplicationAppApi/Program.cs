@@ -1,6 +1,8 @@
 using ApplicationAppApi.ApplicationDataBaseContext;
 using ApplicationAppApi.Services.Applicant;
 using ApplicationAppApi.Services.Applicant.Interfaces;
+using ApplicationAppApi.Services.Application;
+using ApplicationAppApi.Services.Application.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -46,6 +48,7 @@ builder.Services.AddCors(options =>
 });
 
 builder.Services.AddScoped<IApplicant, ApplicantService>();
+builder.Services.AddScoped<IApplication, ApplicationService>();
 
 var app = builder.Build();
 

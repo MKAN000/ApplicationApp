@@ -1,8 +1,10 @@
 ﻿using ApplicationAppApi.ApplicationDataBaseContext;
 using ApplicationAppApi.Models.ApplicantModel;
+using ApplicationAppApi.Models.ApplicantModel.DTO;
 using ApplicationAppApi.Services.Applicant.Interfaces;
 using AutoMapper;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 
 namespace ApplicationAppApi.Services.Applicant
 {
@@ -10,7 +12,6 @@ namespace ApplicationAppApi.Services.Applicant
     {
         private readonly ApplicationDbContext _applicationDbContext;
         private readonly IMapper _mapper;
-        private readonly UserManager<IdentityUser> _userManager;
        
         public ApplicantService
         (
@@ -34,6 +35,21 @@ namespace ApplicationAppApi.Services.Applicant
             {
                 return false;
             }
+        }
+
+        public async Task<ApplicantModelDto> GetApplicantData(int albumNumber)
+        {
+            try
+            {
+                var applicantData = await _applicationDbContext.Applicants.Where(x=>x.AlbumNumber == albumNumber).FirstOrDefaultAsync();
+                var applicantDataToDisplay = _mapper.Map<ApplicantModelDto>(applicantData);
+                return applicantDataToDisplay;
+            }
+            catch (Exception)
+            {
+                return null;
+            }
+            
         }
     }
 }

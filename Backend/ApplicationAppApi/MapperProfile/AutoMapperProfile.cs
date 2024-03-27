@@ -1,4 +1,6 @@
-﻿using AutoMapper;
+﻿using ApplicationAppApi.Models.ApplicantModel;
+using ApplicationAppApi.Models.ApplicantModel.DTO;
+using AutoMapper;
 
 namespace ApplicationAppApi.MapperProfile
 {
@@ -6,7 +8,7 @@ namespace ApplicationAppApi.MapperProfile
     {
         public AutoMapperProfile()
         {
-                
+                CreateMap<ApplicantModel, ApplicantModelDto>();
         }
     }
 }
