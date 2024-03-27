@@ -1,4 +1,6 @@
 using ApplicationAppApi.ApplicationDataBaseContext;
+using ApplicationAppApi.Services.Applicant;
+using ApplicationAppApi.Services.Applicant.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -8,6 +10,8 @@ var configuration = new ConfigurationBuilder()
     .AddJsonFile("appsettings.json")
     .Build();
 // Add services to the container.
+
+builder.Services.AddAutoMapper(typeof(Program).Assembly);
 
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
 {
@@ -40,6 +44,8 @@ builder.Services.AddCors(options =>
             .AllowAnyMethod();
     });
 });
+
+builder.Services.AddScoped<IApplicant, ApplicantService>();
 
 var app = builder.Build();
 

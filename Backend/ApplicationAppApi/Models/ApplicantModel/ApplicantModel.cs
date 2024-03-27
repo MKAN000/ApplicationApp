@@ -5,6 +5,7 @@ namespace ApplicationAppApi.Models.ApplicantModel
     public class ApplicantModel
     {
         [Key]
+        public int ID { get; set; }
         public int AlbumNumber { get; set; }
         public string Rank { get; set; }
         public string Name { get; set; }

@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace ApplicationAppApi.Migrations
 {
     /// <inheritdoc />
-    public partial class Init : Migration
+    public partial class typoFix7 : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
@@ -15,8 +15,9 @@ namespace ApplicationAppApi.Migrations
                 name: "Applicants",
                 columns: table => new
                 {
-                    AlbumNumber = table.Column<int>(type: "int", nullable: false)
+                    ID = table.Column<int>(type: "int", nullable: false)
                         .Annotation("SqlServer:Identity", "1, 1"),
+                    AlbumNumber = table.Column<int>(type: "int", nullable: false),
                     Rank = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
                     Surname = table.Column<string>(type: "nvarchar(max)", nullable: false),
@@ -25,7 +26,7 @@ namespace ApplicationAppApi.Migrations
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Applicants", x => x.AlbumNumber);
+                    table.PrimaryKey("PK_Applicants", x => x.ID);
                 });
 
             migrationBuilder.CreateTable(

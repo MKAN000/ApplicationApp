@@ -24,11 +24,14 @@ namespace ApplicationAppApi.Migrations
 
             modelBuilder.Entity("ApplicationAppApi.Models.ApplicantModel.ApplicantModel", b =>
                 {
-                    b.Property<int>("AlbumNumber")
+                    b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int");
 
-                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("AlbumNumber"));
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<int>("AlbumNumber")
+                        .HasColumnType("int");
 
                     b.Property<string>("FacultyGroup")
                         .IsRequired()
@@ -50,7 +53,7 @@ namespace ApplicationAppApi.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.HasKey("AlbumNumber");
+                    b.HasKey("ID");
 
                     b.ToTable("Applicants");
                 });
