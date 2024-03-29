@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, FormControl, ReactiveFormsModule } from '@angular/forms';
 import { ApplicantService } from '../Services/applicant.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-main-page',
@@ -12,19 +13,12 @@ import { ApplicantService } from '../Services/applicant.service';
 
 export class MainPageComponent {
   myForm: FormGroup;
-  rank: String ="";
-  name: String ="";
-  surname: String ="";
-  facultyGroup: String =""
-  subdivision: String =""
-  albumNumber: String =""
-
-  
 
   constructor
   (
     private fb: FormBuilder,
     private applicantService : ApplicantService,
+    private router: Router
     
   )
   {
@@ -36,21 +30,9 @@ export class MainPageComponent {
 
   GetApplicantDataFromForm()
   {
-    const inputData = this.myForm.get('inputData')?.value;
-    console.log(inputData);
-    this.GetApplicantDataFromServer(inputData)
+    const albumNumber = this.myForm.get('inputData')?.value;
+    this.router.navigateByUrl(`/application/${albumNumber}`)
   }
 
-  GetApplicantDataFromServer(albumNumber : Number):void{
-    this.applicantService.GetApplicantData(albumNumber)
-      .subscribe((data)=>{
-        this.rank = data.rank;
-        this.name = data.name;
-        this.surname = data.surname;
-        this.facultyGroup = data.facultyGroup;
-        this.subdivision = data.subdivision;
-        this.albumNumber = data.albumNumber;
-        console.log(data);
-      })
-  }
+  
 }
