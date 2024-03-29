@@ -1,0 +1,6 @@
+.readonly-field {
+    border: 1px solid #ccc;
+    padding: 5px;
+    background-color: #f9f9f9;
+    cursor: not-allowed;
+  }

@@ -1,1 +1,22 @@
-<p>main-page works!</p>
+<form [formGroup]="myForm" (ngSubmit)="GetApplicantDataFromForm()">
+  <label for="inputData">Numer Albumu: </label>
+  <input type="number" formControlName="inputData" id="inputData" />
+  <button type="submit">Pobierz dane</button>
+</form>
+
+<h2>Dane personalne</h2>
+<div>
+  <label for="RanNamSur"> Stopień, Imię, Nazwisko </label>
+  <div id="RanNamSur" class="readonly-field">
+    {{ rank }} {{ name }} {{ surname }}
+  </div>
+
+  <label for="subdivision"> Pododdział </label>
+  <div id="subdivision" class="readonly-field">{{ subdivision }}</div>
+
+  <label for="facultyGroup"> Grupa wykładowa </label>
+  <div id="facultyGroup" class="readonly-field">{{ facultyGroup }}</div>
+
+  <label for="albumNumber"> Numer Albumu</label>
+  <div id="albumNumber" class="readonly-field">{{ albumNumber }}</div>
+</div>

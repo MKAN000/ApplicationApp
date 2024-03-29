@@ -27,7 +27,7 @@ namespace ApplicationAppApi.Controllers.ApplicantController
         }
 
         [HttpGet("Get", Name = "GetApplicantData")]
-        public async Task<IActionResult> GetApplicantData([FromQuery] int albumNumber)
+        public async Task<IActionResult> GetApplicantData([FromHeader] int albumNumber)
         {
             var applicantData = await _applicantService.GetApplicantData(albumNumber);
             if (applicantData != null)
