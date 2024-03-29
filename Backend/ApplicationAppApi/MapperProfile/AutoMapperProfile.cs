@@ -1,5 +1,7 @@
 ﻿using ApplicationAppApi.Models.ApplicantModel;
 using ApplicationAppApi.Models.ApplicantModel.DTO;
+using ApplicationAppApi.Models.SupervisorModel;
+using ApplicationAppApi.Models.SupervisorModel.DTO;
 using AutoMapper;
 
 namespace ApplicationAppApi.MapperProfile
@@ -8,7 +10,9 @@ namespace ApplicationAppApi.MapperProfile
     {
         public AutoMapperProfile()
         {
-                CreateMap<ApplicantModel, ApplicantModelDto>();
+            CreateMap<ApplicantModel, ApplicantModelDto>();
+            CreateMap<SupervisorModel, SupervisorModelDto>();
+            
         }
     }
 }

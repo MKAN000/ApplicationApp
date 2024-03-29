@@ -3,6 +3,8 @@ using ApplicationAppApi.Services.Applicant;
 using ApplicationAppApi.Services.Applicant.Interfaces;
 using ApplicationAppApi.Services.Application;
 using ApplicationAppApi.Services.Application.Interfaces;
+using ApplicationAppApi.Services.Supervisor;
+using ApplicationAppApi.Services.Supervisor.Interfaces;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
@@ -49,6 +51,7 @@ builder.Services.AddCors(options =>
 
 builder.Services.AddScoped<IApplicant, ApplicantService>();
 builder.Services.AddScoped<IApplication, ApplicationService>();
+builder.Services.AddScoped<ISupervisor, SupervisorService >();
 
 var app = builder.Build();
 
