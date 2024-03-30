@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
 import { ApplicantService } from '../Services/applicant.service';
 import { ActivatedRoute } from '@angular/router';
+import { SupervisorPageComponent } from '../supervisor-page/supervisor-page.component';
 
 @Component({
   selector: 'app-application-page',
   standalone: true,
-  imports: [],
+  imports: [SupervisorPageComponent],
   templateUrl: './application-page.component.html',
   styleUrl: './application-page.component.css'
 })

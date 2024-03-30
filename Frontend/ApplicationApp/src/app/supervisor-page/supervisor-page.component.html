@@ -1,0 +1,45 @@
+<h2>Dane rozkazu przełożonego</h2>
+<form [formGroup]="form">
+  <div>
+    <label for="Rank">Ranga przełożonego</label>
+    <input
+      type="text"
+      id="Rank"
+      formControlName="rank"
+      [readonly]="isReadOnly"
+    />
+  </div>
+
+  <div>
+    <label for="Origin">Pochodzenie</label>
+    <input
+      type="text"
+      id="Origin"
+      formControlName="origin"
+      [readonly]="isReadOnly"
+    />
+  </div>
+
+  <div>
+    <label for="OrderNo">Numer rozkazu</label>
+    <input
+      type="text"
+      id="OrderNo"
+      formControlName="orderNo"
+      [readonly]="isReadOnly"
+    />
+  </div>
+
+  <div>
+    <label for="OrderDate"> Data uzyskania rozkazu</label>
+    <input
+      type="date"
+      id="OrderDate"
+      formControlName="orderDate"
+      [readonly]="isReadOnly"
+    />
+  </div>
+
+  <button (click)="submitForm()" [disabled]="isReadOnly">Zapisz</button>
+  <button *ngIf="isReadOnly" (click)="enableEdit()">Edytuj</button>
+</form>
