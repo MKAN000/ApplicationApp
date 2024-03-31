@@ -1,4 +1,5 @@
 ﻿using ApplicationAppApi.ApplicationDataBaseContext;
+using ApplicationAppApi.Models.ApplicationModel;
 using ApplicationAppApi.Services.Application.Interfaces;
 using AutoMapper;
 using System.Text;
@@ -7,26 +8,30 @@ namespace ApplicationAppApi.Services.Application
 {
     public class ApplicationService : IApplication
     {
-       // private readonly ApplicationDbContext _applicationDbContext;
         private readonly IMapper _mapper;
-
+        private readonly ApplicationDbContext _applicationDbContext;
         public ApplicationService
         (
-            //ApplicationDbContext applicationDbContext,
+            ApplicationDbContext applicationDbContext,
             IMapper mapper
         )
         {
-            //_applicationDbContext = applicationDbContext;
+            _applicationDbContext = applicationDbContext;
             _mapper = mapper;
         }
-        public Task<bool> SaveCsvToDb(string csvData)
+        public async Task<bool> CreateApplicationText(ApplicationModel application)
         {
-            throw new NotImplementedException();
-        }
+            try
+            {
+                _applicationDbContext.Applications.Add(application);
+                await _applicationDbContext.SaveChangesAsync();
+                return true;
+            }
+            catch (Exception)
+            {
 
-        public async Task<bool> UploadFileToCsv(Stream fileStream)
-        {
-            throw new NotImplementedException();
+                return false;
+            }
         }
     }
 }
