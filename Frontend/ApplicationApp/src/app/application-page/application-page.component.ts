@@ -2,11 +2,12 @@ import { Component, OnInit } from '@angular/core';
 import { ApplicantService } from '../Services/applicant.service';
 import { ActivatedRoute } from '@angular/router';
 import { SupervisorPageComponent } from '../supervisor-page/supervisor-page.component';
+import { ApplicationTextComponent } from '../application-text/application-text.component';
 
 @Component({
   selector: 'app-application-page',
   standalone: true,
-  imports: [SupervisorPageComponent],
+  imports: [SupervisorPageComponent,ApplicationTextComponent],
   templateUrl: './application-page.component.html',
   styleUrl: './application-page.component.css'
 })
@@ -17,6 +18,7 @@ export class ApplicationPageComponent implements OnInit{
   facultyGroup: String =""
   subdivision: String =""
   albumNumber: Number = 0
+  
   
 
   constructor(private applicantService : ApplicantService,private route: ActivatedRoute)

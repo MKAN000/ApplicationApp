@@ -1,0 +1,110 @@
+<h2>Dane wniosku</h2>
+<form [formGroup]="myForm" (ngSubmit)="onSubmit()" class="form-container">
+  <div class="form-group">
+    <label for="applicationPurpose">Cel wniosku:</label>
+    <input
+      type="text"
+      id="applicationPurpose"
+      formControlName="applicationPurpose"
+      [readonly]="isReadOnly"
+      [class.readonly-field]="isReadOnly"
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="toWhom">Do kogo:</label>
+    <input
+      type="text"
+      id="toWhom"
+      formControlName="toWhom"
+      [readonly]="isReadOnly"
+      [class.readonly-field]="isReadOnly"
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="dateRange">Zakres dat:</label>
+    <input
+      type="text"
+      id="dateRange"
+      formControlName="dateRange"
+      [readonly]="isReadOnly"
+      [class.readonly-field]="isReadOnly"
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="reason">Motywacja wniosku:</label>
+    <input
+      type="text"
+      id="reason"
+      formControlName="reason"
+      [readonly]="isReadOnly"
+      [class.readonly-field]="isReadOnly"
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="isOnDuty">Czy masz służbę:</label>
+    <input
+      type="checkbox"
+      id="isOnDuty"
+      formControlName="isOnDuty"
+      [readonly]="isReadOnly"
+      [class.readonly-field]="isReadOnly"
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="isHavingClasses">Czy masz zajęcia:</label>
+    <input
+      type="checkbox"
+      id="isHavingClasses"
+      formControlName="isHavingClasses"
+      [readonly]="isReadOnly"
+      [class.readonly-field]="isReadOnly"
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="arrears">Zaległości:</label>
+    <input
+      type="text"
+      id="arrears"
+      formControlName="arrears"
+      [readonly]="isReadOnly"
+      [class.readonly-field]="isReadOnly"
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="isHavingDisciplinaryPenalty"
+      >Czy posiadasz karę dyscyplinarną:</label
+    >
+    <input
+      type="checkbox"
+      id="isHavingDisciplinaryPenalty"
+      formControlName="isHavingDisciplinaryPenalty"
+      [readonly]="isReadOnly"
+      [class.readonly-field]="isReadOnly"
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="vacDestination">Miejsce przebywania:</label>
+    <input
+      type="text"
+      id="vacDestination"
+      formControlName="vacDestination"
+      [readonly]="isReadOnly"
+      [class.readonly-field]="isReadOnly"
+    />
+  </div>
+
+  <button type="submit" class="submit-button" [disabled]="isReadOnly">
+    Zapisz
+  </button>
+  <button *ngIf="isReadOnly" (click)="enableEdit()" class="edit-button">
+    Edytuj
+  </button>
+</form>

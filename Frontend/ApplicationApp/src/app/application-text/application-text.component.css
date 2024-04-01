@@ -13,13 +13,18 @@
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
+
+/* Styl dla grupy formularza */
+.form-group {
+  margin-bottom: 20px;
+}
+
 .readonly-field {
   background-color: #f0f0f0; /* Kolor tła dla pól tylko do odczytu */
   cursor: not-allowed; /* Zmiana kursora na zakaz edycji */
   color: #555; /* Kolor tekstu dla pól tylko do odczytu */
 }
 
-/* Dodatkowy styl dla przycisku "Edytuj" */
 .edit-button {
   background-color: #007bff; /* Kolor tła przycisku "Edytuj" */
   color: #fff; /* Kolor tekstu przycisku "Edytuj" */
@@ -33,11 +38,6 @@
 .edit-button:hover {
   background-color: #0056b3; /* Kolor tła przycisku "Edytuj" po najechaniu */
 }
-/* Styl dla grupy formularza */
-.form-group {
-  margin-bottom: 20px;
-}
-
 /* Styl dla etykiety */
 label {
   display: block;
@@ -52,6 +52,11 @@ input[type="date"] {
   padding: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
+}
+
+/* Styl dla pola checkbox */
+input[type="checkbox"] {
+  margin-right: 5px;
 }
 
 /* Styl dla przycisków */

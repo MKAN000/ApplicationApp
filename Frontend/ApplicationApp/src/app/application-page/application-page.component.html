@@ -1,19 +1,32 @@
 <h2>Dane personalne</h2>
-<div>
-  <label for="RanNamSur"> Stopień, Imię, Nazwisko </label>
-  <div id="RanNamSur" class="readonly-field">
-    {{ rank }} {{ name }} {{ surname }}
+
+<div class="form-container">
+  <div>
+    <label for="RanNamSur">Stopień, Imię, Nazwisko</label>
+    <div id="RanNamSur" class="readonly-field">
+      {{ rank }} {{ name }} {{ surname }}
+    </div>
   </div>
 
-  <label for="subdivision"> Pododdział </label>
-  <div id="subdivision" class="readonly-field">{{ subdivision }}</div>
+  <div>
+    <label for="subdivision">Pododdział</label>
+    <div id="subdivision" class="readonly-field">{{ subdivision }}</div>
+  </div>
 
-  <label for="facultyGroup"> Grupa wykładowa </label>
-  <div id="facultyGroup" class="readonly-field">{{ facultyGroup }}</div>
+  <div>
+    <label for="facultyGroup">Grupa wykładowa</label>
+    <div id="facultyGroup" class="readonly-field">{{ facultyGroup }}</div>
+  </div>
 
-  <label for="albumNumber"> Numer Albumu</label>
-  <div id="albumNumber" class="readonly-field">{{ albumNumber }}</div>
+  <div>
+    <label for="albumNumber">Numer Albumu</label>
+    <div id="albumNumber" class="readonly-field">{{ albumNumber }}</div>
+  </div>
 </div>
+
 <div>
   <app-supervisor-page></app-supervisor-page>
+</div>
+<div>
+  <app-application-text></app-application-text>
 </div>

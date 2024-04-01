@@ -1,6 +1,26 @@
+/* Styl dla pól formularza w trybie tylko do odczytu */
 .readonly-field {
-    border: 1px solid #ccc;
-    padding: 5px;
-    background-color: #f9f9f9;
-    cursor: not-allowed;
-  }
+  border: 1px solid #ddd; /* Ramka dla pól tylko do odczytu */
+  padding: 8px; /* Wielkość wewnętrznego odstępu dla pól tylko do odczytu */
+  background-color: #f0f0f0; /* Kolor tła dla pól tylko do odczytu */
+  cursor: not-allowed; /* Zmiana kursora na zakaz edycji */
+}
+
+/* Dodatkowy styl dla etykiet */
+.form-container label {
+  display: block; /* Ustawienie etykiet jako bloków, aby były wyświetlane jeden pod drugim */
+  margin-bottom: 5px; /* Dodatkowy margines na dole etykiety */
+}
+
+/* Dodatkowy styl dla sekcji "Dane personalne" */
+.form-container {
+  padding: 20px; /* Dodatkowy padding dla kontenera formularza */
+  border: 1px solid #ddd; /* Ramka dla kontenera formularza */
+  border-radius: 5px; /* Zaokrąglenie krawędzi kontenera formularza */
+  background-color: #fff; /* Kolor tła kontenera formularza */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Cień dla kontenera formularza */
+}
+
+.form-container > div {
+  margin-bottom: 15px; /* Dodatkowy margines na dole każdej grupy formularza */
+}

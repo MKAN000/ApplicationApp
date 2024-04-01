@@ -1,45 +1,54 @@
 <h2>Dane rozkazu przełożonego</h2>
-<form [formGroup]="form">
-  <div>
+
+<form [formGroup]="form" class="form-container">
+  <div class="form-group">
     <label for="Rank">Ranga przełożonego</label>
     <input
       type="text"
       id="Rank"
       formControlName="rank"
-      [readonly]="isReadOnly"
+      [disabled]="isReadOnly"
+      [class.readonly-field]="isReadOnly"
     />
   </div>
 
-  <div>
+  <div class="form-group">
     <label for="Origin">Pochodzenie</label>
     <input
       type="text"
       id="Origin"
       formControlName="origin"
-      [readonly]="isReadOnly"
+      [disabled]="isReadOnly"
+      [class.readonly-field]="isReadOnly"
     />
   </div>
 
-  <div>
+  <div class="form-group">
     <label for="OrderNo">Numer rozkazu</label>
     <input
       type="text"
       id="OrderNo"
       formControlName="orderNo"
-      [readonly]="isReadOnly"
+      [disabled]="isReadOnly"
+      [class.readonly-field]="isReadOnly"
     />
   </div>
 
-  <div>
-    <label for="OrderDate"> Data uzyskania rozkazu</label>
+  <div class="form-group">
+    <label for="OrderDate">Data uzyskania rozkazu</label>
     <input
       type="date"
       id="OrderDate"
       formControlName="orderDate"
-      [readonly]="isReadOnly"
+      [disabled]="isReadOnly"
+      [class.readonly-field]="isReadOnly"
     />
   </div>
 
-  <button (click)="submitForm()" [disabled]="isReadOnly">Zapisz</button>
-  <button *ngIf="isReadOnly" (click)="enableEdit()">Edytuj</button>
+  <button (click)="submitForm()" [disabled]="isReadOnly" class="submit-button">
+    Zapisz
+  </button>
+  <button *ngIf="isReadOnly" (click)="enableEdit()" class="edit-button">
+    Edytuj
+  </button>
 </form>
