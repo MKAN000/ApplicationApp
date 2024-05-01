@@ -1,7 +1,7 @@
-﻿using ApplicationAppApi.Models.ApplicantModel;
-using ApplicationAppApi.Models.ApplicantModel.DTO;
-using ApplicationAppApi.Models.SupervisorModel;
-using ApplicationAppApi.Models.SupervisorModel.DTO;
+﻿using ApplicationAppApi.Models.Applicant;
+using ApplicationAppApi.Models.Applicant.DTO;
+using ApplicationAppApi.Models.Supervisor;
+using ApplicationAppApi.Models.Supervisor.DTO;
 using AutoMapper;
 
 namespace ApplicationAppApi.MapperProfile

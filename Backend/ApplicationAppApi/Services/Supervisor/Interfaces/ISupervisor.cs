@@ -1,5 +1,5 @@
-﻿using ApplicationAppApi.Models.SupervisorModel;
-using ApplicationAppApi.Models.SupervisorModel.DTO;
+﻿using ApplicationAppApi.Models.Supervisor;
+using ApplicationAppApi.Models.Supervisor.DTO;
 
 namespace ApplicationAppApi.Services.Supervisor.Interfaces
 {

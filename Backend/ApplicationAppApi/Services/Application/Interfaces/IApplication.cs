@@ -1,4 +1,4 @@
-﻿using ApplicationAppApi.Models.ApplicationModel;
+﻿using ApplicationAppApi.Models.Application;
 
 namespace ApplicationAppApi.Services.Application.Interfaces
 {

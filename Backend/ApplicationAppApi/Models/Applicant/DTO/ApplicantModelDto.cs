@@ -1,4 +1,4 @@
-﻿namespace ApplicationAppApi.Models.ApplicantModel.DTO
+﻿namespace ApplicationAppApi.Models.Applicant.DTO
 {
     public class ApplicantModelDto
     {

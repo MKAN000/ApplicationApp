@@ -1,4 +1,4 @@
-﻿using ApplicationAppApi.Models.ApplicationModel;
+﻿using ApplicationAppApi.Models.Application;
 using ApplicationAppApi.Services.Application.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 

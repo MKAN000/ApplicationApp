@@ -1,6 +1,6 @@
 ﻿using ApplicationAppApi.ApplicationDataBaseContext;
-using ApplicationAppApi.Models.SupervisorModel;
-using ApplicationAppApi.Models.SupervisorModel.DTO;
+using ApplicationAppApi.Models.Supervisor;
+using ApplicationAppApi.Models.Supervisor.DTO;
 using ApplicationAppApi.Services.Supervisor.Interfaces;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;

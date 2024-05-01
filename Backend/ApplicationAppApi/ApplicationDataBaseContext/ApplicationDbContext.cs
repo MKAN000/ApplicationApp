@@ -1,6 +1,6 @@
-﻿using ApplicationAppApi.Models.ApplicantModel;
-using ApplicationAppApi.Models.ApplicationModel;
-using ApplicationAppApi.Models.SupervisorModel;
+﻿using ApplicationAppApi.Models.Applicant;
+using ApplicationAppApi.Models.Application;
+using ApplicationAppApi.Models.Supervisor;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;

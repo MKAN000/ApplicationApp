@@ -1,6 +1,6 @@
 ﻿using ApplicationAppApi.ApplicationDataBaseContext;
-using ApplicationAppApi.Models.ApplicantModel;
-using ApplicationAppApi.Models.ApplicantModel.DTO;
+using ApplicationAppApi.Models.Applicant;
+using ApplicationAppApi.Models.Applicant.DTO;
 using ApplicationAppApi.Services.Applicant.Interfaces;
 using AutoMapper;
 using Microsoft.AspNetCore.Identity;

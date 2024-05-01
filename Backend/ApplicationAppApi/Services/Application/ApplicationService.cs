@@ -1,5 +1,5 @@
 ﻿using ApplicationAppApi.ApplicationDataBaseContext;
-using ApplicationAppApi.Models.ApplicationModel;
+using ApplicationAppApi.Models.Application;
 using ApplicationAppApi.Services.Application.Interfaces;
 using AutoMapper;
 using System.Text;

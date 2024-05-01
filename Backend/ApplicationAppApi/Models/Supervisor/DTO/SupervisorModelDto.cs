@@ -1,4 +1,4 @@
-﻿namespace ApplicationAppApi.Models.SupervisorModel.DTO
+﻿namespace ApplicationAppApi.Models.Supervisor.DTO
 {
     public class SupervisorModelDto
     {

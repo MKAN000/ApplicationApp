@@ -1,4 +1,4 @@
-﻿using ApplicationAppApi.Models.SupervisorModel;
+﻿using ApplicationAppApi.Models.Supervisor;
 using ApplicationAppApi.Services.Supervisor.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 

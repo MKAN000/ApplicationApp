@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ApplicationAppApi.Models.SupervisorModel
+namespace ApplicationAppApi.Models.Supervisor
 {
     public class SupervisorModel
     {

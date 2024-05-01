@@ -1,11 +1,11 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ApplicationAppApi.Models.ApplicantModel
+namespace ApplicationAppApi.Models.Applicant
 {
     public class ApplicantModel
     {
         [Key]
-        public int ID { get; set; }
+        public int Id { get; set; }
         public int AlbumNumber { get; set; }
         public string Rank { get; set; }
         public string Name { get; set; }
