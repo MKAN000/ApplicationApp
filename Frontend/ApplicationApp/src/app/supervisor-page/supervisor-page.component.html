@@ -45,7 +45,12 @@
     />
   </div>
 
-  <button (click)="submitForm()" [disabled]="isReadOnly" class="submit-button">
+  <button
+    (click)="submitForm()"
+    [disabled]="isReadOnly"
+    [class.readonly-field]="isReadOnly"
+    class="submit-button"
+  >
     Zapisz
   </button>
   <button *ngIf="isReadOnly" (click)="enableEdit()" class="edit-button">
