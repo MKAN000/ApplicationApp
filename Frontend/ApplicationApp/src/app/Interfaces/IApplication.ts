@@ -2,7 +2,8 @@ export interface IApplication
 {
     ApplicationPurpose: String,
     ToWhom: String,
-    DateRange: String,
+    StartDate: String,
+    EndDate: String,
     Reason: String,
     IsOnDuty: Boolean,
     IsHavingClasses: Boolean,

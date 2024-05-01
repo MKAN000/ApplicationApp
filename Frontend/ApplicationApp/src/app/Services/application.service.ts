@@ -16,7 +16,7 @@ export class ApplicationService
         return this.http.post<any>('https://localhost:7072/Application/Create', ApplicationText )
         .pipe(
             catchError(err=>{
-                console.error("404 Bad Request", err)
+                console.error(err)
                 throw err
             })
         )

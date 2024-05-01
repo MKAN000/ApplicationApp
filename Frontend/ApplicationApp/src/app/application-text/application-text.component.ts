@@ -1,6 +1,8 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { ApplicationService } from '../Services/application.service';
+import { IApplication } from '../Interfaces/IApplication';
 
 
 @Component({
@@ -13,19 +15,23 @@ import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 export class ApplicationTextComponent implements OnInit {
   myForm! : FormGroup
   isReadOnly: boolean = false;
+  applicationText! : IApplication
   
   /**
-   *
+  ///////////
    */
-  constructor(private formBuilder: FormBuilder) {
+  constructor(
+    private formBuilder: FormBuilder,
+    private applicationService: ApplicationService
+  ) {
     
   }
   ngOnInit(): void {
     this.myForm = this.formBuilder.group({
       applicationPurpose: [''],
       toWhom: [''],
-      StartDate: [''],
-      EndDate: [''],
+      startDate: [''],
+      endDate: [''],
       reason: [''],
       isOnDuty: [false],
       isHavingClasses: [false],
@@ -35,8 +41,27 @@ export class ApplicationTextComponent implements OnInit {
     });
   }
   onSubmit() {
-    console.log(this.myForm.value);
-    this.isReadOnly = true;
+    if(this.myForm?.valid)
+    {
+      this.applicationText = this.myForm.value
+      console.log(this.applicationText)
+      this.applicationService.SaveApplicationDetails(this.applicationText)
+      .subscribe({
+        next(res) 
+        {
+          console.log(res)
+        },
+        error(err)
+        {
+          console.log(err)
+        }
+      })
+      this.isReadOnly = true;
+    }
+    else
+    {
+      console.log("form not valid")
+    }
   }
   enableEdit(): void {
     this.isReadOnly = false; 
