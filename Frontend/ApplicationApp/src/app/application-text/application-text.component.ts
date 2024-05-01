@@ -1,13 +1,12 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
-import {MatDatepickerModule} from '@angular/material/datepicker';
-import {MatNativeDateModule} from '@angular/material/core';
+
 
 @Component({
   selector: 'app-application-text',
   standalone: true,
-  imports: [ReactiveFormsModule,CommonModule,MatDatepickerModule,MatNativeDateModule],
+  imports: [ReactiveFormsModule,CommonModule,],
   templateUrl: './application-text.component.html',
   styleUrl: './application-text.component.css'
 })
@@ -25,7 +24,8 @@ export class ApplicationTextComponent implements OnInit {
     this.myForm = this.formBuilder.group({
       applicationPurpose: [''],
       toWhom: [''],
-      dateRange: [''],
+      StartDate: [''],
+      EndDate: [''],
       reason: [''],
       isOnDuty: [false],
       isHavingClasses: [false],

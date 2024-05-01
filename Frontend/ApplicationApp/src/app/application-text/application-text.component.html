@@ -23,7 +23,25 @@
   </div>
 
   <div class="form-group">
-    <label for="dateRange">Zakres dat:</label>
+    <label for="StartDate">Data Początkowa</label>
+    <input
+      type="date"
+      id="StartDate"
+      formControlName="StartDate"
+      [disabled]="isReadOnly"
+      [class.readonly-field]="isReadOnly"
+    />
+  </div>
+
+  <div class="form-group">
+    <label for="EndDate">Data Końcowa</label>
+    <input
+      type="date"
+      id="EndDate"
+      formControlName="EndDate"
+      [disabled]="isReadOnly"
+      [class.readonly-field]="isReadOnly"
+    />
   </div>
 
   <div class="form-group">
