@@ -4,6 +4,7 @@ using ApplicationAppApi.ApplicationDataBaseContext;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ApplicationAppApi.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20240501181617_DbRedisign3")]
+    partial class DbRedisign3
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -94,7 +97,7 @@ namespace ApplicationAppApi.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("SupervisorModelOrderNo")
+                    b.Property<int>("SupervisorModelId")
                         .HasColumnType("int");
 
                     b.Property<string>("ToWhom")
@@ -113,7 +116,7 @@ namespace ApplicationAppApi.Migrations
 
                     b.HasIndex("ApplicantModelAlbumNumber");
 
-                    b.HasIndex("SupervisorModelOrderNo");
+                    b.HasIndex("SupervisorModelId");
 
                     b.ToTable("Applications");
                 });
@@ -355,7 +358,7 @@ namespace ApplicationAppApi.Migrations
 
                     b.HasOne("ApplicationAppApi.Models.Supervisor.SupervisorModel", "SupervisorModel")
                         .WithMany()
-                        .HasForeignKey("SupervisorModelOrderNo")
+                        .HasForeignKey("SupervisorModelId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 

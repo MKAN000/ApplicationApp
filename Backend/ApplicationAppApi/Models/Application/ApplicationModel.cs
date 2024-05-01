@@ -9,11 +9,11 @@ namespace ApplicationAppApi.Models.Application
     {
         [Key]
         public int Id { get; set; }
-        public int SupervisorModelId { get; set; }
-        [ForeignKey("SupervisorModelId")]
+        public int SupervisorModelOrderNo { get; set; }
+        [ForeignKey("SupervisorModelOrderNo")]
         public SupervisorModel SupervisorModel { get; set; }
-        public int ApplicantModelId { get; set; }
-        [ForeignKey("ApplicantModelId")]
+        public int ApplicantModelAlbumNumber { get; set; }
+        [ForeignKey("ApplicantModelAlbumNumber")]
         public ApplicantModel ApplicantModel { get; set; }
         public string ApplicationPurpose { get; set; }
         public string ToWhom { get; set; }

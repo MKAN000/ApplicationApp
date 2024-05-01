@@ -9,5 +9,7 @@ export interface IApplication
     IsHavingClasses: Boolean,
     Arrears: String,
     IsHavingDisciplinaryPenalty: String,
-    VacDestiantion: String
+    VacDestiantion: String,
+    ApplicantModelAlbumNumber: String,
+    SupervisorModelId: String
 }

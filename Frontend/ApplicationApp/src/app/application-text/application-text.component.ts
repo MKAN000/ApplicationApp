@@ -1,5 +1,5 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ApplicationService } from '../Services/application.service';
 import { IApplication } from '../Interfaces/IApplication';
@@ -16,6 +16,7 @@ export class ApplicationTextComponent implements OnInit {
   myForm! : FormGroup
   isReadOnly: boolean = false;
   applicationText! : IApplication
+  @Input() albumNumber! : Number
   
   /**
   ///////////
@@ -27,6 +28,7 @@ export class ApplicationTextComponent implements OnInit {
     
   }
   ngOnInit(): void {
+    console.log(this.albumNumber)
     this.myForm = this.formBuilder.group({
       applicationPurpose: [''],
       toWhom: [''],
@@ -44,6 +46,7 @@ export class ApplicationTextComponent implements OnInit {
     if(this.myForm?.valid)
     {
       this.applicationText = this.myForm.value
+      this.applicationText.ApplicantModelAlbumNumber = this.albumNumber.toString()
       console.log(this.applicationText)
       this.applicationService.SaveApplicationDetails(this.applicationText)
       .subscribe({
