@@ -11,5 +11,5 @@ export interface IApplication
     IsHavingDisciplinaryPenalty: String,
     VacDestiantion: String,
     ApplicantModelAlbumNumber: String,
-    SupervisorModelId: String
+    SupervisorModelOrderNo: String
 }

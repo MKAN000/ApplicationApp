@@ -47,9 +47,9 @@ export class SupervisorPageComponent implements OnInit {
 
     if(this.form?.valid)
     {
-
       this.supervisorOrderDetails = this.form.value
-      console.log(this.supervisorOrderDetails);
+
+      this.supervisorOrderService.setOrderNo(this.form.value.orderNo)
 
       this.supervisorOrderService.SaveOrderDetails(this.supervisorOrderDetails)
       .subscribe({

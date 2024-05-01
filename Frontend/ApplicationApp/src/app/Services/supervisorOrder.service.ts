@@ -9,6 +9,7 @@ import { ISupervisor } from "../Interfaces/ISupervisor";
 
 export class supervisorOrderService
 {
+    private orderNo!: String;
     http = inject(HttpClient)
 
     SaveOrderDetails(supervisorOrderDetails:ISupervisor) : Observable<any>
@@ -20,5 +21,13 @@ export class supervisorOrderService
             throw err
         })
        )
+    }
+
+    setOrderNo(orderNo:String)
+    {
+        this.orderNo = orderNo;
+    }
+    getOrderNo(): String {
+        return this.orderNo;
     }
 }

@@ -3,6 +3,7 @@ import { Component, OnInit, Input } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { ApplicationService } from '../Services/application.service';
 import { IApplication } from '../Interfaces/IApplication';
+import { supervisorOrderService } from '../Services/supervisorOrder.service';
 
 
 @Component({
@@ -23,7 +24,8 @@ export class ApplicationTextComponent implements OnInit {
    */
   constructor(
     private formBuilder: FormBuilder,
-    private applicationService: ApplicationService
+    private applicationService: ApplicationService,
+    private supervisorOrderService : supervisorOrderService
   ) {
     
   }
@@ -46,8 +48,13 @@ export class ApplicationTextComponent implements OnInit {
     if(this.myForm?.valid)
     {
       this.applicationText = this.myForm.value
+
       this.applicationText.ApplicantModelAlbumNumber = this.albumNumber.toString()
+
+      this.applicationText.SupervisorModelOrderNo = this.supervisorOrderService.getOrderNo();
+
       console.log(this.applicationText)
+
       this.applicationService.SaveApplicationDetails(this.applicationText)
       .subscribe({
         next(res) 
