@@ -22,7 +22,14 @@ namespace ApplicationAppApi.Controllers.ApplicationController
                 return Ok();
             } 
             return BadRequest();
+        }
 
+        [HttpGet("GenerateTextFiles")]
+        public async Task <IActionResult> GenerateTextFiles(string filePath, int id)
+        {
+            await _application.CreateFilePath(filePath,id);
+
+            return Ok();
         }
     }
 }

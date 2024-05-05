@@ -2,6 +2,7 @@
 using ApplicationAppApi.Models.Application;
 using ApplicationAppApi.Services.Application.Interfaces;
 using AutoMapper;
+using Microsoft.EntityFrameworkCore;
 using System.Text;
 
 namespace ApplicationAppApi.Services.Application
@@ -31,6 +32,28 @@ namespace ApplicationAppApi.Services.Application
             {
 
                 return false;
+            }
+        }
+
+        public async Task CreateFilePath(string filePath, int applicationId)
+        {
+            var application = await _applicationDbContext.Applications.FirstOrDefaultAsync(x => x.Id == applicationId);
+           
+
+            var _filePath = Path.Combine(filePath, $"Nagrodówka_{applicationId}.txt");
+            
+            await GenerateTxtFileFromObj(application, _filePath);
+
+        }
+
+        private async Task GenerateTxtFileFromObj(ApplicationModel? application, string filePath)
+        {
+            using(StreamWriter writer = new StreamWriter(filePath))
+            {
+                foreach (var item in application.GetType().GetProperties())
+                {
+                    await writer.WriteLineAsync($"{item.Name}: {item.GetValue(application)}");
+                }
             }
         }
     }
