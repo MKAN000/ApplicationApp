@@ -11,7 +11,7 @@ namespace ApplicationAppApi.Models.Application
         public int Id { get; set; }
         public string SupervisorModelOrderNo { get; set; }
         [ForeignKey("SupervisorModelOrderNo")]
-        public string ApplicantModelAlbumNumber { get; set; }
+        public int ApplicantModelAlbumNumber { get; set; }
         [ForeignKey("ApplicantModelAlbumNumber")]
         public string ApplicationPurpose { get; set; }
         public string ToWhom { get; set; }

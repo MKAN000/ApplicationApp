@@ -38,15 +38,23 @@ namespace ApplicationAppApi.Services.Application
         public async Task CreateFilePath(string filePath, int applicationId)
         {
             var application = await _applicationDbContext.Applications.FirstOrDefaultAsync(x => x.Id == applicationId);
-           
+
+            var textFileModel = _mapper.Map<ApplicationModel, TextFileModel>(application);
+
+            var applicant = await _applicationDbContext.Applicants.FirstOrDefaultAsync(x => x.AlbumNumber == application.ApplicantModelAlbumNumber);
+
+            var order = await _applicationDbContext.SupervisorsOrder.FirstOrDefaultAsync(x => x.OrderNo == application.SupervisorModelOrderNo);
+
+            textFileModel.applicant = applicant;
+            textFileModel.supervisor = order;
 
             var _filePath = Path.Combine(filePath, $"Nagrodówka_{applicationId}.txt");
             
-            await GenerateTxtFileFromObj(application, _filePath);
+            await GenerateTxtFileFromObj(textFileModel, _filePath);
 
         }
 
-        private async Task GenerateTxtFileFromObj(ApplicationModel? application, string filePath)
+        private async Task GenerateTxtFileFromObj(TextFileModel? application, string filePath)
         {
             using(StreamWriter writer = new StreamWriter(filePath))
             {
