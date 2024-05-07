@@ -1,0 +1,40 @@
+:host {
+    display: block;
+    padding: 24px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Cieniowanie */
+    border: 1px solid #ddd; /* Obramowanie */
+  }
+  
+  h2 {
+    color: #333; /* Kolor tekstu */
+    text-align: center; /* Wyśrodkowanie tekstu */
+  }
+  
+  p {
+    color: #666; /* Kolor tekstu */
+  }
+  button.mat-button {
+    min-width: 100px;
+    margin-right: 10px;
+    border-radius: 4px; /* Zaokrąglenie krawędzi */
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Cieniowanie */
+  }
+  
+  button.mat-button[color="primary"] {
+    background-color: #1976d2;
+    color: white;
+  }
+  
+  button.mat-button[color="warn"] {
+    background-color: #f44336;
+    color: white;
+  }
+.dialog-actions {
+    display: flex;
+    justify-content: flex-end; /* Wyśrodkowanie elementów do prawej strony */
+  }
+  
+  .spacer {
+    flex-grow: 1; /* Rozciąganie pustego elementu, aby przycisk "Anuluj" był na końcu */
+  }
