@@ -48,7 +48,7 @@ namespace ApplicationAppApi.Controllers.ApplicationController
 
 
             var data = new PdfDocument();
-            var htmlContent = "<div style = 'margin: 20px auto; heigth:1000px; max-width: 600px; padding: 20px; border: 1px solid #ccc; background-color: #FFFFFF; font-family: Arial, sans-serif;' >";
+            var htmlContent = "<div style = 'margin: auto; heigth:1000px; max-width: 600px; padding: 20px; border: 1px solid #ccc; background-color: #FFFFFF; font-family: Arial, sans-serif;' >";
             htmlContent += $"<p style = 'margin: 0;' >{applicationTextToGenerate.Rank}, {applicationTextToGenerate.Name} {applicationTextToGenerate.Surname}</p>";
             htmlContent += $"<p style = 'margin: 0;' >{applicationTextToGenerate.Subdivision}</p>";
             htmlContent += $"<p style = 'margin: 0;' >{applicationTextToGenerate.FacultyGroup}</p>";
@@ -58,9 +58,9 @@ namespace ApplicationAppApi.Controllers.ApplicationController
             htmlContent += $"<h1>{applicationTextToGenerate.ToWhom}</h1>";
             htmlContent += "</div>";
             htmlContent += $"<h3> Dotyczy: {applicationTextToGenerate.ApplicationPurpose}</h3>";
-            htmlContent += $"<p> Szanowny Panie,</p>";
+            htmlContent += $"<p> Szanowny Panie Pułkowniku,</p>";
             htmlContent += $"<p> Proszę o umożliwienie " +
-                $"{applicationTextToGenerate.ApplicationPurpose} udzielonego mi w rozkazie dziennym " +
+                $"{applicationTextToGenerate.ApplicationPurpose.ToLower()} udzielonego mi w rozkazie dziennym " +
                 $"{applicationTextToGenerate.SupervisorRank} {applicationTextToGenerate.Origin} nr. {applicationTextToGenerate.OrderNo}" +
                 $" z dnia {applicationTextToGenerate.OrderDate} w dniach {applicationTextToGenerate.StartDate} - {applicationTextToGenerate.EndDate}." +
                 $" Wniosek swój motywuję {applicationTextToGenerate.Reason}.</p>";

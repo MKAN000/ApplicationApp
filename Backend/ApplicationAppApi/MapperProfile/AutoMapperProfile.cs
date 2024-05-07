@@ -18,7 +18,7 @@ namespace ApplicationAppApi.MapperProfile
             CreateMap<SupervisorModel, SupervisorModelDto>();
             CreateMap<ApplicationModel, ApplicationDtoModel>();
             CreateMap<ApplicantModel, ApplicationDtoModel>();
-            CreateMap<SupervisorModel, ApplicationDtoModel>().ForMember(dest => dest.SupervisorRank, opt => opt.MapFrom(src => src.Rank));
+            CreateMap<SupervisorModel, ApplicationDtoModel>();
         }
 
 

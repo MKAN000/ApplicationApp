@@ -36,7 +36,7 @@ export class SupervisorPageComponent implements OnInit {
   
   initializeForm(): void {
     this.form = this.fb.group({
-      rank: ['', Validators.required],
+      supervisorRank: ['', Validators.required],
       origin: ['', Validators.required],
       orderNo: ['', Validators.required],
       orderDate: ['', Validators.required]

@@ -1,6 +1,6 @@
 export interface ISupervisor
 {
-    Rank: String
+    SupervisorRank: String
     Origin: String
     OrderNo: String
     OrderDate: String

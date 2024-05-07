@@ -2,11 +2,11 @@
 
 <form [formGroup]="form" class="form-container">
   <div class="form-group">
-    <label for="Rank">Stopień przełożonego</label>
+    <label for="supervisorRank">Stopień przełożonego</label>
     <input
       type="text"
-      id="Rank"
-      formControlName="rank"
+      id="supervisorRank"
+      formControlName="supervisorRank"
       [disabled]="isReadOnly"
       [class.readonly-field]="isReadOnly"
     />
