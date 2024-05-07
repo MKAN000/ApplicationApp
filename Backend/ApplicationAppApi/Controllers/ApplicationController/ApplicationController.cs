@@ -43,27 +43,27 @@ namespace ApplicationAppApi.Controllers.ApplicationController
             DateTime currentDate = DateTime.Now;
 
             string formattedDate = currentDate.ToString("dd-MM-yyyy");
-             
+
             var applicationTextToGenerate = await _application.GeneratePdf(applicationId);
+
 
             var data = new PdfDocument();
             var htmlContent = "<div style = 'margin: 20px auto; heigth:1000px; max-width: 600px; padding: 20px; border: 1px solid #ccc; background-color: #FFFFFF; font-family: Arial, sans-serif;' >";
-            htmlContent += $"<p style = 'margin: 0;' >{applicationTextToGenerate.Rank}, {applicationTextToGenerate.Name}, {applicationTextToGenerate.Surname}</p>";
+            htmlContent += $"<p style = 'margin: 0;' >{applicationTextToGenerate.Rank}, {applicationTextToGenerate.Name} {applicationTextToGenerate.Surname}</p>";
             htmlContent += $"<p style = 'margin: 0;' >{applicationTextToGenerate.Subdivision}</p>";
             htmlContent += $"<p style = 'margin: 0;' >{applicationTextToGenerate.FacultyGroup}</p>";
             htmlContent += $"<p style = 'margin: 0; text-align: right;' > Warszawa, {formattedDate}</p>";
 
             htmlContent += "<div style = 'text-align: center; margin-bottom: 20px;'>";
             htmlContent += $"<h1>{applicationTextToGenerate.ToWhom}</h1>";
-            htmlContent += $"<h1>{applicationTextToGenerate.SupervisorRank}</h1>";
             htmlContent += "</div>";
-            htmlContent += $"<h3> Dotyczy: {applicationTextToGenerate.Reason}</h3>";
+            htmlContent += $"<h3> Dotyczy: {applicationTextToGenerate.ApplicationPurpose}</h3>";
             htmlContent += $"<p> Szanowny Panie,</p>";
             htmlContent += $"<p> Proszę o umożliwienie " +
                 $"{applicationTextToGenerate.ApplicationPurpose} udzielonego mi w rozkazie dziennym " +
-                $"{applicationTextToGenerate.SupervisorRank} nr. {applicationTextToGenerate.OrderNo}" +
+                $"{applicationTextToGenerate.SupervisorRank} {applicationTextToGenerate.Origin} nr. {applicationTextToGenerate.OrderNo}" +
                 $" z dnia {applicationTextToGenerate.OrderDate} w dniach {applicationTextToGenerate.StartDate} - {applicationTextToGenerate.EndDate}." +
-                $"Wniosek swój motywuję {applicationTextToGenerate.Reason}</p>";
+                $" Wniosek swój motywuję {applicationTextToGenerate.Reason}.</p>";
             if (applicationTextToGenerate.IsOnDuty == "true")
             {
             }
@@ -86,10 +86,10 @@ namespace ApplicationAppApi.Controllers.ApplicationController
             }
             else
             {
-                htmlContent += $"    oraz nie posiadam kar dyscyplinarnych</p>";
+                htmlContent += $"    oraz nie posiadam kar dyscyplinarnych.</p>";
             }
 
-            htmlContent += $"<p>Na urlop udam się do {applicationTextToGenerate.VacDestination}</p>";
+            htmlContent += $"<p>Na urlop udam się do {applicationTextToGenerate.VacDestination}.</p>";
             htmlContent += $"<p>Proszę o pozytywne rozpatrzenie mojego wnioksu.</p>";
             htmlContent += $"<p style='text-align: right;'>Z poważaniem</p>";
 

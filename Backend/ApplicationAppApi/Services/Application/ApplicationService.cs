@@ -38,6 +38,18 @@ namespace ApplicationAppApi.Services.Application
             }
         }
 
+        public static string ConvertDateFormat(string day)
+        {
+            if (DateTime.TryParseExact(day, "yyyy-MM-dd", null, System.Globalization.DateTimeStyles.None, out DateTime date))
+            {
+                return date.ToString("dd-MM-yyyy");
+            }
+            else
+            {
+                return null;
+            }
+        }
+
         public async Task CreateFilePath(string filePath, int applicationId)
         {
             var application = await _applicationDbContext.Applications.FirstOrDefaultAsync(x => x.Id == applicationId);
@@ -53,6 +65,7 @@ namespace ApplicationAppApi.Services.Application
             _mapper.Map(applicant, applicationTextToGenerate);
             _mapper.Map(order, applicationTextToGenerate);
 
+            
             var _filePath = Path.Combine(filePath, $"Nagrodówka_{applicationId}.txt");
             
             await GenerateTxtFileFromObj(applicationTextToGenerate, _filePath);
@@ -73,6 +86,10 @@ namespace ApplicationAppApi.Services.Application
             _mapper.Map(application, applicationTextToGenerate);
             _mapper.Map(applicant, applicationTextToGenerate);
             _mapper.Map(order, applicationTextToGenerate);
+
+            applicationTextToGenerate.StartDate = ConvertDateFormat(applicationTextToGenerate.StartDate);
+            applicationTextToGenerate.EndDate = ConvertDateFormat(applicationTextToGenerate.EndDate);
+            applicationTextToGenerate.OrderDate = ConvertDateFormat(applicationTextToGenerate.OrderDate);
 
             return applicationTextToGenerate;
         }
