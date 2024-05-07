@@ -1,9 +1,12 @@
 ﻿using ApplicationAppApi.Models.Applicant;
 using ApplicationAppApi.Models.Applicant.DTO;
 using ApplicationAppApi.Models.Application;
+using ApplicationAppApi.Models.Application.DTO;
 using ApplicationAppApi.Models.Supervisor;
 using ApplicationAppApi.Models.Supervisor.DTO;
+using ApplicationAppApi.Services.Applicant.Interfaces;
 using AutoMapper;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace ApplicationAppApi.MapperProfile
 {
@@ -13,11 +16,11 @@ namespace ApplicationAppApi.MapperProfile
         {
             CreateMap<ApplicantModel, ApplicantModelDto>();
             CreateMap<SupervisorModel, SupervisorModelDto>();
-            CreateMap<ApplicationModel, TextFileModel>()
-            .ForMember(dest => dest.application, opt => opt.MapFrom(src => src))
-            .ForMember(dest => dest.applicant, opt => opt.Ignore())
-            .ForMember(dest => dest.supervisor, opt => opt.Ignore());
-
+            CreateMap<ApplicationModel, ApplicationDtoModel>();
+            CreateMap<ApplicantModel, ApplicationDtoModel>();
+            CreateMap<SupervisorModel, ApplicationDtoModel>().ForMember(dest => dest.SupervisorRank, opt => opt.MapFrom(src => src.Rank));
         }
+
+
     }
 }

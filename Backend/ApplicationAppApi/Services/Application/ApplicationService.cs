@@ -1,5 +1,8 @@
 ﻿using ApplicationAppApi.ApplicationDataBaseContext;
+using ApplicationAppApi.Models.Applicant;
 using ApplicationAppApi.Models.Application;
+using ApplicationAppApi.Models.Application.DTO;
+using ApplicationAppApi.Models.Supervisor;
 using ApplicationAppApi.Services.Application.Interfaces;
 using AutoMapper;
 using Microsoft.EntityFrameworkCore;
@@ -39,30 +42,35 @@ namespace ApplicationAppApi.Services.Application
         {
             var application = await _applicationDbContext.Applications.FirstOrDefaultAsync(x => x.Id == applicationId);
 
-            var textFileModel = _mapper.Map<ApplicationModel, TextFileModel>(application);
-
             var applicant = await _applicationDbContext.Applicants.FirstOrDefaultAsync(x => x.AlbumNumber == application.ApplicantModelAlbumNumber);
 
             var order = await _applicationDbContext.SupervisorsOrder.FirstOrDefaultAsync(x => x.OrderNo == application.SupervisorModelOrderNo);
 
-            textFileModel.applicant = applicant;
-            textFileModel.supervisor = order;
+
+            var applicationTextToGenerate = new ApplicationDtoModel();
+
+            _mapper.Map(application, applicationTextToGenerate);
+            _mapper.Map(applicant, applicationTextToGenerate);
+            _mapper.Map(order, applicationTextToGenerate);
 
             var _filePath = Path.Combine(filePath, $"Nagrodówka_{applicationId}.txt");
             
-            await GenerateTxtFileFromObj(textFileModel, _filePath);
+            await GenerateTxtFileFromObj(applicationTextToGenerate, _filePath);
 
         }
 
-        private async Task GenerateTxtFileFromObj(TextFileModel? application, string filePath)
+        private async Task GenerateTxtFileFromObj(ApplicationDtoModel? application, string filePath)
         {
-            using(StreamWriter writer = new StreamWriter(filePath))
+            using (StreamWriter writer = new StreamWriter(filePath))
             {
+                // Wartości dla ApplicationDtoModel
                 foreach (var item in application.GetType().GetProperties())
                 {
                     await writer.WriteLineAsync($"{item.Name}: {item.GetValue(application)}");
                 }
+
             }
         }
+
     }
 }
