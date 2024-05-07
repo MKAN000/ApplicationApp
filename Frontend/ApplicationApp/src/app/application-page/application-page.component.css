@@ -1,26 +1,74 @@
-/* Styl dla pól formularza w trybie tylko do odczytu */
-.readonly-field {
-  border: 1px solid #ddd; /* Ramka dla pól tylko do odczytu */
-  padding: 8px; /* Wielkość wewnętrznego odstępu dla pól tylko do odczytu */
-  background-color: #f0f0f0; /* Kolor tła dla pól tylko do odczytu */
-  cursor: not-allowed; /* Zmiana kursora na zakaz edycji */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-/* Dodatkowy styl dla etykiet */
-.form-container label {
-  display: block; /* Ustawienie etykiet jako bloków, aby były wyświetlane jeden pod drugim */
-  margin-bottom: 5px; /* Dodatkowy margines na dole etykiety */
-}
-
-/* Dodatkowy styl dla sekcji "Dane personalne" */
+/* Stylowanie kontenera formularza */
 .form-container {
-  padding: 20px; /* Dodatkowy padding dla kontenera formularza */
-  border: 1px solid #ddd; /* Ramka dla kontenera formularza */
-  border-radius: 5px; /* Zaokrąglenie krawędzi kontenera formularza */
-  background-color: #fff; /* Kolor tła kontenera formularza */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Cień dla kontenera formularza */
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f9f9f9;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  border: 2px solid #ddd; /* Obramowanie */
 }
 
-.form-container > div {
-  margin-bottom: 15px; /* Dodatkowy margines na dole każdej grupy formularza */
+/* Stylowanie nagłówka */
+h2 {
+  font-size: 24px;
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+/* Stylowanie pojedynczego pola formularza */
+.form-container div {
+  margin-bottom: 15px;
+}
+
+/* Stylowanie etykiety pola formularza */
+label {
+  font-size: 18px;
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* Stylowanie pola tylko do odczytu */
+.readonly-field {
+  background-color: #f0f0f0;
+  padding: 10px;
+  border-radius: 5px;
+  font-size: 16px;
+  border: 1px solid #ccc; /* Obramowanie */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1); /* Cieniowanie */
+  cursor: not-allowed;
+}
+button {
+  background-color: #4CAF50; /* Zielony kolor tła */
+  color: white; /* Biały kolor tekstu */
+  padding: 10px 20px; /* Wielkość wypełnienia */
+  border: none; /* Usunięcie domyślnego obramowania */
+  border-radius: 5px; /* Zaokrąglenie krawędzi */
+  font-size: 16px; /* Rozmiar czcionki */
+  cursor: pointer; /* Zmiana kursora na wskaźnik */
+  display: block; /* Wyśrodkowanie */
+  margin: 0 auto; /* Wyśrodkowanie */
+  margin-top: 20px; /* Odstęp od góry */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Cieniowanie */
+}
+
+button:hover {
+  background-color: #45a049; /* Zielony kolor tła po najechaniu myszką */
+}
+
+button:focus {
+  outline: none; /* Usunięcie domyślnego obramowania po skupieniu */
+}
+
+/* Stylowanie komponentów podrzędnych */
+app-supervisor-page,
+app-application-text {
+  margin-top: 20px;
 }

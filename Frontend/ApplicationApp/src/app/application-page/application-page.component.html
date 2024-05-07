@@ -1,6 +1,6 @@
-<h2>Dane personalne</h2>
-
 <div class="form-container">
+  <h2>Dane personalne</h2>
+
   <div>
     <label for="RanNamSur">Stopień, Imię, Nazwisko</label>
     <div id="RanNamSur" class="readonly-field">
@@ -22,11 +22,15 @@
     <label for="albumNumber">Numer Albumu</label>
     <div id="albumNumber" class="readonly-field">{{ albumNumber }}</div>
   </div>
-</div>
 
-<div>
-  <app-supervisor-page></app-supervisor-page>
-</div>
-<div>
-  <app-application-text [albumNumber]="albumNumber"></app-application-text>
+  <div>
+    <app-supervisor-page></app-supervisor-page>
+  </div>
+  <div>
+    <app-application-text [albumNumber]="albumNumber"></app-application-text>
+  </div>
+
+  <div>
+    <button>Generuj PDF</button>
+  </div>
 </div>
