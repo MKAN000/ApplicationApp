@@ -60,7 +60,7 @@ namespace ApplicationAppApi.Controllers.ApplicationController
             htmlContent += $"<p style = 'margin: 0;' >{applicationTextToGenerate.FacultyGroup}</p>";
 
             htmlContent += "<div style='margin-bottom: 20px; text-align: left;'>";
-            htmlContent += $"<p style='font-size: 12px;'><b>{applicationTextToGenerate.ToWhom}</b></p>";
+            htmlContent += $"<p style='text-indent: 2cm; font-size: 12px;'><b>{applicationTextToGenerate.ToWhom}</b></p>";
             htmlContent += "</div>";
 
             htmlContent += $"<p style='font-size: 10px;'> <b><i>Dotyczy:</i></b> <i>{applicationTextToGenerate.ApplicationPurpose}</i></p>";
