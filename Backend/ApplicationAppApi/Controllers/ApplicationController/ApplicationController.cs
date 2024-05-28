@@ -42,34 +42,42 @@ namespace ApplicationAppApi.Controllers.ApplicationController
         {
             DateTime currentDate = DateTime.Now;
 
-            string formattedDate = currentDate.ToString("dd-MM-yyyy");
+            string formattedDate = currentDate.ToString("dd.MM.yyyy");
+
 
             var applicationTextToGenerate = await _application.GeneratePdf(applicationId);
 
+            applicationTextToGenerate.OrderDate = applicationTextToGenerate.OrderDate.Replace("-", ".");
+            applicationTextToGenerate.StartDate = applicationTextToGenerate.StartDate.Replace("-", ".");
+            applicationTextToGenerate.EndDate = applicationTextToGenerate.EndDate.Replace("-", ".");
+
 
             var data = new PdfDocument();
-            var htmlContent = "<div style = 'margin: auto; heigth:1000px; max-width: 600px; padding: 20px; border: 1px solid #ccc; background-color: #FFFFFF; font-family: Arial, sans-serif;' >";
-            htmlContent += $"<p style = 'margin: 0;' >{applicationTextToGenerate.Rank}, {applicationTextToGenerate.Name} {applicationTextToGenerate.Surname}</p>";
+            var htmlContent = "<div style='margin: auto; max-width: 600px; padding: 20px; background-color: #FFFFFF; font-family: Arial, sans-serif; font-size: 12px;'>";
+            htmlContent += $"<span style='margin: 0; text-align: left;'>{applicationTextToGenerate.Rank}, {applicationTextToGenerate.Name} {applicationTextToGenerate.Surname} <span style='text-align: right;'>Warszawa, {formattedDate}</span></span>";
+
             htmlContent += $"<p style = 'margin: 0;' >{applicationTextToGenerate.Subdivision}</p>";
             htmlContent += $"<p style = 'margin: 0;' >{applicationTextToGenerate.FacultyGroup}</p>";
-            htmlContent += $"<p style = 'margin: 0; text-align: right;' > Warszawa, {formattedDate}</p>";
 
-            htmlContent += "<div style = 'text-align: center; margin-bottom: 20px;'>";
-            htmlContent += $"<h1>{applicationTextToGenerate.ToWhom}</h1>";
+            htmlContent += "<div style='margin-bottom: 20px; text-align: left;'>";
+            htmlContent += $"<p style='font-size: 12px;'><b>{applicationTextToGenerate.ToWhom}</b></p>";
             htmlContent += "</div>";
-            htmlContent += $"<h3> Dotyczy: {applicationTextToGenerate.ApplicationPurpose}</h3>";
-            htmlContent += $"<p> Szanowny Panie Pułkowniku,</p>";
-            htmlContent += $"<p> Proszę o umożliwienie " +
-                $"{applicationTextToGenerate.ApplicationPurpose.ToLower()} udzielonego mi w rozkazie dziennym " +
-                $"{applicationTextToGenerate.SupervisorRank} {applicationTextToGenerate.Origin} nr. {applicationTextToGenerate.OrderNo}" +
-                $" z dnia {applicationTextToGenerate.OrderDate} w dniach {applicationTextToGenerate.StartDate} - {applicationTextToGenerate.EndDate}." +
-                $" Wniosek swój motywuję {applicationTextToGenerate.Reason}.</p>";
+
+            htmlContent += $"<p style='font-size: 10px;'> <b><i>Dotyczy:</i></b> <i>{applicationTextToGenerate.ApplicationPurpose}</i></p>";
+            htmlContent += $"<p style='text-indent: 1cm;'>Szanowny Panie Pułkowniku,</p>";
+
+            htmlContent += $"<p style='text-align: justify;'> Proszę o umożliwienie " +
+                            $"{applicationTextToGenerate.ApplicationPurpose.ToLower()} udzielonego mi w rozkazie dziennym " +
+                            $"{applicationTextToGenerate.SupervisorRank} {applicationTextToGenerate.Origin} nr. {applicationTextToGenerate.OrderNo}" +
+                            $" z dnia {applicationTextToGenerate.OrderDate} w dniach {applicationTextToGenerate.StartDate} - {applicationTextToGenerate.EndDate}." +
+                            $" Wniosek swój motywuję {applicationTextToGenerate.Reason}.</p>";
+
             if (applicationTextToGenerate.IsOnDuty == "true")
             {
             }
             else
             {
-                htmlContent += $"<p>    Melduję, ze w w/w terminie nie jestem wyznaczony do pełnienia służby, " +
+                htmlContent += $"<p style='text-align: justify;'>    Melduję, ze w w/w terminie nie jestem wyznaczony do pełnienia służby, " +
                     $"posiadam zaległości w nauce ({applicationTextToGenerate.arrears}) ,";
             }
 
