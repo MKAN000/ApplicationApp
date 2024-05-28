@@ -2,6 +2,7 @@
 using ApplicationAppApi.Models.Application;
 using ApplicationAppApi.Models.Application.DTO;
 using ApplicationAppApi.Services.Application.Interfaces;
+using Microsoft.AspNetCore.Html;
 using Microsoft.AspNetCore.Mvc;
 using PdfSharpCore;
 using PdfSharpCore.Pdf;
@@ -54,14 +55,19 @@ namespace ApplicationAppApi.Controllers.ApplicationController
 
             var data = new PdfDocument();
             var htmlContent = "<div style='margin: auto; max-width: 600px; padding: 20px; background-color: #FFFFFF; font-family: Arial, sans-serif; font-size: 12px;'>";
-            htmlContent += $"<span style='margin: 0; text-align: left;'>{applicationTextToGenerate.Rank}, {applicationTextToGenerate.Name} {applicationTextToGenerate.Surname} <span style='text-align: right;'>Warszawa, {formattedDate}</span></span>";
+            htmlContent += $"<span style='margin: 0; text-align: left;'>{applicationTextToGenerate.Rank}, {applicationTextToGenerate.Name} {applicationTextToGenerate.Surname} <span style='text-align: right;'>&nbsp;" +
+                $"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" +
+                $"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" +
+                $"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" +
+                $"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;" +
+                $"&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;Warszawa, {formattedDate}</span></span>";
 
             htmlContent += $"<p style = 'margin: 0;' >{applicationTextToGenerate.Subdivision}</p>";
             htmlContent += $"<p style = 'margin: 0;' >{applicationTextToGenerate.FacultyGroup}</p>";
 
-            htmlContent += "<div style='margin-bottom: 20px; text-align: left;'>";
-            htmlContent += $"<p style='text-indent: 2cm; font-size: 12px;'><b>{applicationTextToGenerate.ToWhom}</b></p>";
-            htmlContent += "</div>";
+            htmlContent += $"<p style='font-size: 12px; text-indent: 2cm;'> <b><i>{applicationTextToGenerate.ToWhom}</i></b></p>";
+
+
 
             htmlContent += $"<p style='font-size: 10px;'> <b><i>Dotyczy:</i></b> <i>{applicationTextToGenerate.ApplicationPurpose}</i></p>";
             htmlContent += $"<p style='text-indent: 1cm;'>Szanowny Panie Pułkowniku,</p>";
